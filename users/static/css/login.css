@@ -1,0 +1,25 @@
+.loginForm {
+    margin-left: 30%;
+    margin-top: 10%;
+    margin-right: 30%;
+    background-color: antiquewhite;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form{
+    padding: 10%;
+}
+.btn-primary{
+    margin-left:40%;
+    margin-right:40%;
+}
+.input-group {
+    margin-bottom: 5%;
+}
+h1{
+    text-align: center;
+    padding-top: 5%;
+}
+.error {
+    text-align: center;
+    color: red;
+}

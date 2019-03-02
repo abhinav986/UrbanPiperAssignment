@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+    <title>{% block title %}Website Name{% endblock %}</title>
+    <meta charset="utf-8">
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <!-- Multiselect cdn -->
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    
+{% block head_extend %}Website Name{% endblock %}
+</head>
+<body>
+    
+        <div id="navbar">
+            <a class="left" href="/user/">Home</a>
+            <a class="right" href="/user/custom_logout/"><span class="glyphicon glyphicon-log-out"></span> Log out</a>
+            
+        </div>       
+    <div class="container" style="margin-top:7%;">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!--Footer-->
+    
+
+    <!--/.Footer Links-->
+
+    <hr>
+    <!--Copyright-->
+    <div class="footer-copyright">
+        © 2017 Copyright: Website </a>
+    </div>
+    <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
+
+
+</body>
+</html>

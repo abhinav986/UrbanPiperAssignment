@@ -1,0 +1,99 @@
+{% extends "deliveryBoy/base2.html" %}
+
+{% block title %}{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="col-md-3"></div>
+<div class="col-md-6">
+    <h2 class="center"><strong><b>New Task</b></strong></h2>
+<table class="table table-striped">
+    <thead class="thead-inverse">
+        <tr>                  
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Creation Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{new_task.title}}</td>
+            <td>
+                {% if new_task.priority == 2%}
+                High
+                {% elif new_task.priority == 1%}
+                Medium
+                {% elif new_task.priority == 0%}
+                Low
+                {% endif %}
+            </td>
+        
+            <td>{{ new_task.created_at }}</td>
+            <td>{% if new_task.status == 0%}
+                <button type="button">
+                    <a href="/delivery-boy/accept-task/{{ new_task.id }}/">Accept</a>
+                </button>
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="col-md-3"></div>
+<div class="col-md-6">
+    <h2 class="center"><strong><b>Accepted Task</b></strong></h2>
+<table class="table table-striped center">
+    <thead class="thead-inverse">
+        <tr>                  
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Creation Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in accepted_task %}
+        <tr>
+            <td>{{task.task.title}}</td>
+            <td>
+                {% if task.task.priority == 2%}
+                High
+                {% elif task.task.priority == 1%}
+                Medium
+                {% elif task.task.priority == 0%}
+                Low
+                {% endif %}
+            </td>
+            <td>
+                {% if task.task.status == 0%}
+                New
+                {% elif task.task.status == 1%}
+                Accepted
+                {% elif task.task.status == 2%}
+                Completed
+                {% elif task.task.status == 3%}
+                Cancelled
+                {% endif %}
+            </td>
+            <td>{{ task.task.created_at }}</td>
+            <td>
+                {% if task.task.status == 1%}
+                <button type="button">
+                    <a href="/delivery-boy/decline-task/{{ task.task.id }}/">Decline</a>
+                </button>
+
+                <button type="button">
+                    <a href="/delivery-boy/completed-task/{{ task.task.id }}/">Completed</a>
+                </button>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %} 

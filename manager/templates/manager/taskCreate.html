@@ -1,0 +1,39 @@
+{% extends "manager/base1.html" %}
+
+{% block title %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<h2 style="text-align: center;">Create Task</h2>
+<div class="userWork-workDetail">
+        {% if error %}
+            <p style="color: red; text-align: center;">{{error}}</p>
+        {% endif %}
+        {% if msg %}
+            <p style="color: green; text-align: center;">{{msg}}</p>
+        {% endif %}
+
+    <form class="col-md-6" style="margin-left: 20%;" method="POST" action="/manager/create-task/">
+        <div class="form-group">
+            <label >Title</label>
+            <input type="text" class="form-control" name="title" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="sel1">Select Priority</label>
+            <select class="form-control" name="priority">
+              <option value="0">Low</option>
+              <option value="1">Medium</option>
+              <option value="2">High</option>
+            </select>
+        </div>
+        <center>
+            <button type="submit">Submit</button>
+        </center>
+        
+    </form>
+</div>
+
+{% endblock %}

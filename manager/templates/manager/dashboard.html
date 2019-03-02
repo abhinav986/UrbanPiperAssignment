@@ -1,0 +1,60 @@
+{% extends "manager/base1.html" %}
+
+{% block title %}Guroomed{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="col-md-3"></div>
+<div class="col-md-6">
+    <h2 class="center"><strong><b>Task</b></strong></h2>
+    <a href="/manager/create-task/"><span class="btn btn-warning pull-right waves-effect waves-light"> <i class="fa fa-plus" aria-hidden="true"></i>  ADD NEW</span></a>
+<table class="table table-striped">
+    <thead class="thead-inverse">
+        <tr>                  
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Creation Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{task.title}}</td>
+            <td>
+                {% if task.priority == 2%}
+                High
+                {% elif task.priority == 1%}
+                Medium
+                {% elif task.priority == 0%}
+                Low
+                {% endif %}
+            </td>
+            <td>
+                {% if task.status == 0%}
+                New
+                {% elif task.status == 1%}
+                Accepted
+                {% elif task.status == 2%}
+                Completed
+                {% elif task.status == 3%}
+                Cancelled
+                {% endif %}
+            </td>
+            <td>{{ task.created_at }}</td>
+            <td>
+                {% if task.status == 0%}
+                <button type="button">
+                    <a href="/manager/cancel-task/{{task.id}}/">Cancel</a>
+                </button>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %} 
